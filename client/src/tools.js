@@ -16,7 +16,7 @@ const Tools = ({
     setBrushSize(brushRadius);
   }, []);
   return (
-    <div style={{ boxShadow: "none" }}>
+    <div className="tools-container" style={{ boxShadow: "none" }}>
       <div className="slider-container">
         <div className="icon-container">
           <FontAwesomeIcon

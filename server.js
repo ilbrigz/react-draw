@@ -12,6 +12,8 @@ const http = require("http");
 
 dotenv.config();
 
+const routes = require("./routes");
+
 const port = process.env.PORT || 8080;
 
 mongoose
@@ -35,6 +37,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, "public")));
+
+app.use("/api", routes);
 
 app.get("/", (req, res, next) => res.send("my backend api"));
 

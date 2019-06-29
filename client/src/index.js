@@ -5,6 +5,7 @@ import CanvasDraw from "react-canvas-draw";
 import ColorPicker from "./colorPicker";
 import images from "./images";
 import Tools from "./tools.js";
+import Artworks from "./Artworks";
 
 import "./styles.css";
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [lastPenColor, setLastPenColor] = useState("#444");
   const [canvasImage, setCanvassImage] = useState("");
   const [brushRadius, setBrushRadius] = useState(30);
+
   // const [savedData, setSavedData] = useState('');
 
   const canvasRef = useRef(null);
@@ -44,11 +46,10 @@ function App() {
   };
   const saveData = () => {
     const data = canvasRef.current.getSaveData();
-    canvasRef2.current.loadSaveData(data);
   };
   return (
     <div className="App">
-      <button onClick={saveData}> save data </button>
+      <h1>Faeiien Art</h1>
       <div className="previews-wrapper">
         {images.map(picture => (
           <div
@@ -66,7 +67,7 @@ function App() {
         ))}
       </div>
       <div className="container">
-        <div className="left-container">
+        <div className="main-container">
           <ColorPicker
             brushColor={brushColor}
             handleColorChange={handleColorChange}
@@ -85,25 +86,14 @@ function App() {
             handleToolChange={toolChange}
             canvasRef={canvasRef}
             brushRadius={brushRadius}
+            immediateLoading={true}
           />
         </div>
-        <div className="canvass-container2">
-          <img
-            src={canvasImage}
-            alt="hey"
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              maxWidth: "100%",
-              maxHeight: "100%",
-
-              zIndex:9999
-            }}
-          />
-          <CanvasDraw ref={canvasRef2} canvasWidth={200} canvasHeight={200} />
-        </div>
+        <button className="publish-btn" onClick={saveData}>
+          {" "}
+          publish artwork{" "}
+        </button>
+        <Artworks />
       </div>
     </div>
   );

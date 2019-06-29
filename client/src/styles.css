@@ -1,19 +1,25 @@
+body,
 html {
-  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  margin: 0;
+  padding: 0;
+}
+html {
+  background: #cfd9df;
 }
 .App {
   font-family: sans-serif;
   text-align: center;
   max-width: 1200px;
   margin: 0 auto;
-  height: 100vh;
+  padding-top: 2rem;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 .previews-wrapper {
   display: flex;
   align-items: stretch;
   width: 100%;
-  overflow-y: scroll;
-  margin-bottom: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .preview-container {
   border: 5px solid transparent;
@@ -33,27 +39,15 @@ html {
   cursor: pointer;
 }
 
-::-webkit-scrollbar {
-  width: 12px; /* for vertical scrollbars */
-  height: 12px; /* for horizontal scrollbars */
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.5);
-}
-
 .canvass-container {
+  grid-area: canvas;
   width: 400px;
   height: 400px;
   overflow: hidden;
   position: relative;
-  margin-left: 1rem;
   min-width: 400px;
   min-height: 400px;
+  justify-self: center;
 }
 .canvass-container > div {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px,
@@ -69,17 +63,24 @@ html {
   pointer-events: none;
   z-index: 9999;
 }
-.left-container {
-  display: flex;
-  max-height: 400px;
-  max-width: 650px;
+.main-container {
+  padding: 1rem 1rem 0 1rem;
+  display: grid;
+  grid-template-columns: 170px 400px 20px;
+  grid-template-areas: "picker canvas tools";
+  grid-gap: 1rem;
+  justify-content: center;
 }
 .left-container > div {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px,
     rgba(0, 0, 0, 0.15) 0px 8px 16px;
 }
+
 .css-1munbi2 {
   height: 100px;
+}
+.sketch-picker {
+  grid-area: picker;
 }
 .slider-container {
   padding: 6px;
@@ -89,16 +90,64 @@ html {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 1rem;
+  margin-bottom: 1rem;
   max-height: 150px;
 }
 .icon-container {
   padding: 6px;
 }
-.canvass-container2 {
+.artwork-container {
   width: 200px;
   height: 200px;
   overflow: hidden;
   position: relative;
+  justify-self: center;
+}
+h3 {
   margin-left: 1rem;
+  text-align: left;
+}
+.artworks-wrapper {
+  background: linear-gradient(
+    -225deg,
+    #ff3f1b 0%,
+    #d89312 29%,
+    #739d0c 67%,
+    #049674 100%
+  );
+}
+.artworks-container {
+  grid-gap: 1rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  justify-content: center;
+}
+.tools-container {
+  grid-area: tools;
+}
+.publish-btn {
+  padding: 0.5rem;
+  border: 1px solid 7279e1;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  background: #ff3f1b;
+}
+
+@media only screen and (max-width: 700px) {
+  .main-container {
+    grid-template-columns: 2fr 3fr;
+    grid-template-rows: 400px 300px;
+    grid-template-areas:
+      "canvas canvas"
+      "picker tools";
+    margin-bottom: 1rem;
+  }
+  .tools-container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: baseline;
+  }
 }
