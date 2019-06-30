@@ -11,15 +11,20 @@ import "./styles.css";
 function App() {
   const [brushColor, setBrusholor] = useState("#444");
   const [lastPenColor, setLastPenColor] = useState("#444");
-  const [canvasImage, setCanvassImage] = useState("");
+  const [canvasImage, setCanvassImage] = useState({});
   const [brushRadius, setBrushRadius] = useState(30);
+  const [artworks, setArtworks] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/artworks").then(result => setArtworks(result.data));
+  }, []);
 
   // const [savedData, setSavedData] = useState('');
 
   const canvasRef = useRef(null);
   const canvasRef2 = useRef(null);
   useEffect(() => {
-    setCanvassImage(images[1].largeImageURL);
+    setCanvassImage(images[1]);
   }, []);
   const handleColorChange = React.useCallback(color => {
     const {
@@ -41,11 +46,24 @@ function App() {
   );
   const handleChangeImage = id => {
     const newImage = images.find(item => id === item.id);
-    setCanvassImage(newImage.largeImageURL);
+    setCanvassImage(newImage);
     canvasRef.current.clear();
   };
-  const saveData = () => {
+  const saveData = id => {
     const data = canvasRef.current.getSaveData();
+    const ran1 = Math.floor(Math.random() * 6 + 5);
+    const ran2 = Math.floor(Math.random() * 6 + 4);
+    let answer = prompt(`What is ${ran1} multiplied to ${ran2}`);
+    if (answer == ran2 * ran1) {
+      alert("Wow you got it right. We are saving it now!");
+      axios
+        .post("/api/artwork", { canvasData: data, imageId: id })
+        .then(data => console.log(data))
+        .catch(e => console.log(e));
+      axios.get("/api/artworks").then(result => setArtworks(result.data));
+    } else {
+      alert("Oops! Don't give up");
+    }
   };
   return (
     <div className="App">
@@ -59,7 +77,7 @@ function App() {
           >
             <img
               className="preview-image"
-              src={picture.previewURL}
+              src={`/${picture.previewURL}`}
               key={picture.id}
               alt={picture.tag}
             />
@@ -73,7 +91,11 @@ function App() {
             handleColorChange={handleColorChange}
           />
           <div className="canvass-container">
-            <img className="overlay-image" src={canvasImage} alt="hey" />
+            <img
+              className="overlay-image"
+              src={`/${canvasImage.largeImageURL}`}
+              alt="hey"
+            />
             <CanvasDraw
               ref={canvasRef}
               brushColor={brushColor}
@@ -88,12 +110,16 @@ function App() {
             brushRadius={brushRadius}
             immediateLoading={true}
           />
+          <button
+            className="publish-btn"
+            onClick={() => saveData(canvasImage.id)}
+          >
+            {" "}
+            publish artwork{" "}
+          </button>
         </div>
-        <button className="publish-btn" onClick={saveData}>
-          {" "}
-          publish artwork{" "}
-        </button>
-        <Artworks />
+
+        <Artworks artworks={artworks} />
       </div>
     </div>
   );

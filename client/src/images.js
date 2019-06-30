@@ -7,8 +7,7 @@ module.exports = [
     imageHeight: 1920,
     imageSize: 155271,
     imageWidth: 1580,
-    largeImageURL:
-      "https://pixabay.com/get/57e8d4404b52ac14f6da8c7dda79367c1d36d8e550566c4870297ad39649c65ab8_1280.png",
+    largeImageURL: "music-1813100_1280.png",
     likes: 88,
     pageURL: "https://pixabay.com/illustrations/music-relax-headphone-1813100/",
     previewHeight: 150,
@@ -36,8 +35,7 @@ module.exports = [
     imageHeight: 1847,
     imageSize: 387471,
     imageWidth: 1920,
-    largeImageURL:
-      "https://pixabay.com/get/52e2dd4b4b50ad14f6da8c7dda79367c1d36d8e550566c4870297ad39649c65ab8_1280.png",
+    largeImageURL: "birds-4288121_1280.png",
     likes: 42,
     pageURL:
       "https://pixabay.com/vectors/birds-love-couple-owl-romance-4288121/",
@@ -65,8 +63,7 @@ module.exports = [
     imageHeight: 1920,
     imageSize: 114473,
     imageWidth: 1918,
-    largeImageURL:
-      "https://pixabay.com/get/57e8d542485aab14f6da8c7dda79367c1d36d8e550566c4870297ad39649c65ab8_1280.png",
+    largeImageURL: "grooming-1801287_1280.png",
     likes: 110,
     pageURL:
       "https://pixabay.com/vectors/grooming-cat-kitty-kitten-feline-1801287/",
@@ -94,8 +91,7 @@ module.exports = [
     imageHeight: 1920,
     imageSize: 879993,
     imageWidth: 1820,
-    largeImageURL:
-      "https://pixabay.com/get/54e8d24b494fad0bffd8992cc62a3f77133fdde24e50744f74287ad0944fc5_1280.png",
+    largeImageURL: "mermaid-28783_1280.png",
     likes: 82,
     pageURL:
       "https://pixabay.com/vectors/mermaid-bubbles-sexy-cartoon-sea-28783/",
@@ -123,8 +119,7 @@ module.exports = [
     imageHeight: 5063,
     imageSize: 805126,
     imageWidth: 3744,
-    largeImageURL:
-      "https://pixabay.com/get/57e2d4424c5aa414f6da8c7dda79367c1d36d8e550566c4870297ad3954acd59ba_1280.png",
+    largeImageURL: "anime-1211688_1920.png",
     likes: 12,
     pageURL:
       "https://pixabay.com/illustrations/anime-sketch-illustrator-1211688/",
@@ -152,8 +147,7 @@ module.exports = [
     imageHeight: 1920,
     imageSize: 418236,
     imageWidth: 1631,
-    largeImageURL:
-      "https://pixabay.com/get/55e0d0424b4fad0bffd8992cc62a3f77133fdde24e50744f742879d39f45c2_1280.png",
+    largeImageURL: "skull-30511_1280.png",
     likes: 43,
     pageURL:
       "https://pixabay.com/vectors/skull-top-hat-silhouette-black-30511/",
@@ -181,8 +175,7 @@ module.exports = [
     imageHeight: 1920,
     imageSize: 126064,
     imageWidth: 1363,
-    largeImageURL:
-      "https://pixabay.com/get/57e1d2414a51b108f5d08460962935761c39dee6544c704c732e7cd69045cd5f_1280.png",
+    largeImageURL: "kiss-117203_1280.png",
     likes: 31,
     pageURL: "https://pixabay.com/vectors/kiss-people-man-nude-naked-117203/",
     previewHeight: 150,

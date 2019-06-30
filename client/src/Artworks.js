@@ -1,71 +1,56 @@
 import React, { useState, useRef, useEffect } from "react";
 import CanvasDraw from "react-canvas-draw";
 import images from "./images";
+import axios from "axios";
 
 function filterImages(id) {
-  const imageToReturn = images.filter(item => item.id === id);
+  const imageToReturn = images.filter(item => item.id == id);
+
   return imageToReturn[0].largeImageURL;
 }
 
-const Artwork = ({ id }) => {
+const Artwork = ({ id, data }) => {
+  const [canvassData, setCanvassData] = useState("");
   const canvasRef = useRef(null);
-
+  useEffect(() => {
+    canvasRef.current.loadSaveData(data);
+  }, [data]);
   return (
-    <div className="artwork-container">
-      <img
-        alt="hey"
-        src={filterImages(id)}
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          maxWidth: "100%",
-          maxHeight: "100%",
-
-          zIndex: 9999
-        }}
-      />
-      <CanvasDraw
-        ref={canvasRef}
-        canvasWidth={200}
-        canvasHeight={200}
-        disabled={true}
-      />
-    </div>
+    id && (
+      <div className="artwork-container">
+        <img
+          alt="whatever"
+          src={`/${filterImages(id)}`}
+          className="artwork-image"
+        />
+        <CanvasDraw
+          ref={canvasRef}
+          canvasWidth={200}
+          canvasHeight={200}
+          disabled={true}
+        />
+      </div>
+    )
   );
 };
 
-const Artworks = () => {
-  const [artworks, setArtworks] = useState([
-    {
-      id: 1813100
-    },
-    {
-      id: 4288121
-    },
-    {
-      id: 1813100
-    },
-    {
-      id: 4288121
-    },
-    {
-      id: 1813100
-    },
-    {
-      id: 4288121
-    }
-  ]);
+const Artworks = ({ artworks }) => {
   return (
-    <div className="artworks-wrapper">
-      <h3>See what the last 10 artwork was.</h3>
-      <div className="artworks-container">
-        {artworks.map(art => (
-          <Artwork key={art.id} id={art.id} />
-        ))}
+    !!artworks.length && (
+      <div className="artworks-wrapper">
+        <h3>Check out the artworks in the last 24 hours.</h3>
+        <div className="artworks-container">
+          {artworks.map(art => (
+            <Artwork
+              artworks={artworks}
+              key={art._id}
+              id={art.imageId}
+              data={art.canvasData}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    )
   );
 };
 
